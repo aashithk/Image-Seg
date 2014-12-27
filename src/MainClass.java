@@ -40,9 +40,9 @@ int row =0;
 	 col=image.cols();
 	 row=image.rows();
 	 arr=new int[col][row];
-	// intensity =new int[col*row];
-	 //fgraph=new int[(col)*(row)+2][(col)*(row)+2];
-	 //usermark=new int[col*row];
+	intensity =new int[col*row];
+	 fgraph=new int[(col)*(row)+2][(col)*(row)+2];
+	 usermark=new int[col*row];
 	 procImg=new Mat(col, row, Highgui.IMREAD_ANYCOLOR);
 	 
  }
@@ -268,6 +268,8 @@ public void printImage()
 	//ff.ford_fulkerson(fgraph, n, n+1);
 		Main.maxflow(fgraph,n, n+1);
 	 System.out.println("The main flow is " + Main.answer); 
+	 
+	 
 	 double[] data1=new double[3];
 	 data1[0]=0;
 	 data1[0]=0;
@@ -288,21 +290,29 @@ public void printImage()
 				//{
 				//procImg.put(j, i, data1);
 				//}
-				
+				int temp=i*row+j;
 				 if(Main.Tree[i*row+j]==2)
 				{
 				image.put(j, i, data1);
 				}
-				 if(Main.Tree[i*row+j]==1)
-					{
-					image.put(j, i, data2);
-					}
+				 if(temp>col){
+				 if(Main.Tree[temp-1]==2 && Main.Tree[temp+1]==2 && Main.Tree[temp-col]==2)
+				 {
+						image.put(j, i, data1);
+				 }
+				 }
+				 if(temp<(col-2)*(row-2) && temp >0){
+					 if(Main.Tree[temp-1]==2 && Main.Tree[temp+1]==2 && Main.Tree[temp+col]==2)
+					 {
+							image.put(j, i, data1);
+					 }
+					 }
 				
 			}
 			
 		}
 	 image=Backup;
-	 Imgproc.Canny(image, image, 300, 600, 5, true); 
+	// Imgproc.Canny(image, image, 300, 600, 5, true); 
 	 Highgui.imwrite("test.jpg", image);
 	// System.out.println("The ford flow is " + ff.ford_fulkerson(fgraph,n, n+1));
 	/* System.out.println("the first set is");

@@ -135,18 +135,18 @@ public class ImageView extends JFrame {
 				if(ImageSelected)
 				{
 					//mImage.bgsub();
-				//mImage.printImage();
+				mImage.printImage();
 					//mImage.bgcalc();
-					mImage=new MainClass(imgpath);
-					try {
-						Thread.sleep(10000);
-					} catch (InterruptedException e) {
+					//mImage=new MainClass(imgpath);
+				//	try {
+				//		Thread.sleep(10000);
+				//	} catch (InterruptedException e) {
 						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-				lblNewLabel.setIcon( new ImageIcon("test.jpg"));
+				//		e.printStackTrace();
+				//	}
+			//	lblNewLabel.setIcon( new ImageIcon("test.jpg"));
 				//	mImage.bgsub();
-				//lblNewLabel.setIcon( new ImageIcon("test.jpg"));
+				lblNewLabel.setIcon( new ImageIcon("test.jpg"));
 				}
 			}
 		});
